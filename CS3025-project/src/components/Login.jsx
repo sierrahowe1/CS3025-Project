@@ -114,8 +114,8 @@ export default function Login({ onLogin }) {
         description: isSignUp ? `Welcome, ${name}! Registered as ${userType}.` : `Welcome back!`,
       });
       
-      // Call the onLoginSuccess callback with user data
-      onLoginSuccess({
+      
+      onLogin({
         name: displayName,
         email: email,
         isStudent: isStudent,
