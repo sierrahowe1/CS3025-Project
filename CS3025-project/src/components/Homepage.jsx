@@ -11,14 +11,15 @@ return (
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-white flex flex-col">
         <div className="relative w-full bg-gradient-to-br from-cyan-400 via-cyan-300 to-cyan-200 rounded-b-[40px] md:rounded-b-[60px] px-6 py-12 md:py-16 lg:py-20 shadow-lg">
             <div className="flex justify-center mb-8 md:mb-10">
-            <img src="src/Image.jpeg" className="w-20 h-20 sm:w-50 sm:h-50 object-contain"/>
+            <img src="src/Image.png" className="w-20 h-20 sm:w-50 sm:h-50 object-contain"/>
 
             </div>
 
             
 
             <div className="text-center max-w-4xl mx-auto">
-                <h1>
+                
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
                     Hello, {userName}!
                 </h1>
                 <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">What can we do for you today?</p>
