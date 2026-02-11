@@ -19,7 +19,7 @@ return (
 
             <div className="text-center max-w-4xl mx-auto">
                 <h1>
-                    Hello, {userName}!
+                    Hello!, {userName}!
                 </h1>
                 <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">What can we do for you today?</p>
             </div>
