@@ -2,6 +2,7 @@
 import { HelpCircle } from "lucide-react";
 
 export default function Homepage({ userName, onLogout}) {
+    const [doCreateAPost, setCreateAPost] = useState(false);
 
     const handleNeedHelp = () => {
         console.log("Requesting help...");
@@ -55,6 +56,10 @@ return (
                 </div>
 
             </div>
+
+        {/*<CreateAPost />
+        isOpen={doCreateAPost}
+        onClose={() => setCreateAPost(false)}*/}
         </div>
 );
 

@@ -365,7 +365,7 @@ export default function Login({ onLogin }) {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`bg-cyan-400 hover:bg-cyan-500 text-black px-8 sm:px-12 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm sm:text-base order-1 sm:order-2 ${!isSignUp ? 'sm:ml-auto' : 'w-full sm:w-auto'}`}
+                className={`bg-cyan-400 hover:bg-cyan-500 text-white px-8 sm:px-12 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm sm:text-base order-1 sm:order-2 ${!isSignUp ? 'sm:ml-auto' : 'w-full sm:w-auto'}`}
               >
                 {isLoading ? (isSignUp ? 'SIGNING UP...' : 'LOGGING IN...') : (isSignUp ? 'SIGN UP' : 'LOGIN')}
               </button>
