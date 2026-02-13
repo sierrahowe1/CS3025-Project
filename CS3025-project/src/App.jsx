@@ -44,7 +44,7 @@ export default function App() {
  return (
   <>
     {isLoggedIn ? (
-      <Homepage userName={credentials?.name} onLogout={handleLogout}/>
+      renderPage()
     ) : (
       <Login onLogin={handleLogin}/>
     )}

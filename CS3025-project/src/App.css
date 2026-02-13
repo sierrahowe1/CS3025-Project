@@ -1,3 +1,5 @@
+
+
 :root {
   --font-size: 16px;
   --background: #ffffff;
@@ -135,7 +137,7 @@
 @layer base {
   :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
     h1 {
-      font-size: var(--text-9xl);
+      font-size: var(--text-2xl);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
     }
@@ -181,4 +183,3 @@
 html {
   font-size: var(--font-size);
 }
-
