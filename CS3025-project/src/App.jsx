@@ -15,6 +15,7 @@ export default function App() {
     setLoggedIn(true);
     setCredentials(user);
   }
+
  const handleLogout = () => {
   setLoggedIn(false);
   setCredentials(null);
@@ -23,9 +24,11 @@ export default function App() {
     description: "You have logged out of your account.",
   });
 
+};
+
   const handleNavigate = (page) => {
     setCurrentPage(page);
-  }
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -33,13 +36,13 @@ export default function App() {
         return <Messages onNavigate={handleNavigate} onLogout={handleLogout}/>
       case 'homepage':
         default:
-          return <Homepage userName={userData?.name} onLogout={handleLogout} onNavigate={handleNavigate}/>
+          return <Homepage userName={credentials?.name} onLogout={handleLogout} onNavigate={handleNavigate}/>
     }
-  }
+  };
 
   
   
- };
+ 
 
  return (
   <>
