@@ -91,7 +91,7 @@ export default function Messages({ onNavigate, onLogout }) {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-white flex">
+    <div className="min-h-screen w-full bg-gradient-to-br from-gray-200 to-gray-200 flex">
       
       <div className="w-52 bg-gradient-to-br from-cyan-400 via-cyan-300 to-cyan-200 flex flex-col">
         
@@ -130,7 +130,7 @@ export default function Messages({ onNavigate, onLogout }) {
           </button>
         </div>
 
-        {/* Need Help Button */}
+        
         <div className="p-4">
           <button
             onClick={handleNeedHelp}
@@ -143,7 +143,7 @@ export default function Messages({ onNavigate, onLogout }) {
           </button>
         </div>
 
-        {/* Logout (for testing) */}
+        
         <div className="p-4">
           <button
             onClick={onLogout}
@@ -161,7 +161,7 @@ export default function Messages({ onNavigate, onLogout }) {
           MESSAGING INBOX
         </h1>
 
-        {/* Messages List */}
+        
         <div className="max-w-4xl space-y-6">
           {messages.map((message) => (
             <div
@@ -169,7 +169,7 @@ export default function Messages({ onNavigate, onLogout }) {
               onClick={() => handleMessageClick(message)}
               className="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow p-6 cursor-pointer"
             >
-              {/* Unread indicator */}
+              
               {message.unread && (
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 bg-red-500 rounded-full"></div>
               )}
