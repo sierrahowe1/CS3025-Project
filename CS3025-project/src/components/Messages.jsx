@@ -48,7 +48,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
         {/* SSA Logo */}
         <div className="p-6">
           <div className="flex flex-col items-center">
-            <img src="src/Image.png" alt="SSA Logo" />
+            <img src="src/Image.png"></img>
           </div>
         </div>
 
