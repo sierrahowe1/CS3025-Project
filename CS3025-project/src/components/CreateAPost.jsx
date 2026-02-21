@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {X, ChevronDown} from 'lucide-react';
+import {ChevronDown} from 'lucide-react';
 import {toast} from 'sonner';
 
 
@@ -67,19 +67,14 @@ export default function CreateAPost ({ isOpen, onClose }) {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-2xl bg-gradient-to-br from-cyan-600 via-cyan-400 to-cyan-200 rounded-[40px] shadow-2xl p-8 md:p-10 max-h-[90vh] overflow-y-auto">
-        <button
-          onClick={handleClose}
-          className="absolute top-6 right-6 text-gray-200 hover:text-white transition-colors"
-        >
-          <X className="w-7 h-7" />
-        </button>
+      <div className="relative w-full max-w-2xl bg-gradient-to-br from-cyan-400 via-cyan-400 to-cyan-400 rounded-[40px] shadow-2xl p-8 md:p-10 max-h-[90vh] overflow-y-auto">
+        
 
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
             Create a New Post
           </h2>
-          <p className="text-black-200 text-base md:text-lg">
+          <p className="text-black-200 text-base md:text-xl">
             Share what you need help with or how you can help others in the community.
           </p>
         </div>
@@ -104,7 +99,7 @@ export default function CreateAPost ({ isOpen, onClose }) {
                     </svg>
                   )}
                 </div>
-                <span className="text-lg text-gray-900">Seeking Help</span>
+                <span className="text-xl text-gray-900">Seeking Help</span>
               </label>
 
               <label className="flex items-center gap-3 cursor-pointer group">
@@ -122,7 +117,7 @@ export default function CreateAPost ({ isOpen, onClose }) {
                     </svg>
                   )}
                 </div>
-                <span className="text-lg text-gray-900">Offering Help</span>
+                <span className="text-xl text-gray-900">Offering Help</span>
               </label>
             </div>
           </div>
@@ -193,7 +188,7 @@ export default function CreateAPost ({ isOpen, onClose }) {
             </button>
             <button
               type="submit"
-              className="bg-gradient-to-br from-cyan-500 to-cyan-400 hover:from-cyan-600 hover:to-cyan-500 text-white font-semibold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-lg"
+              className="bg-gradient-to-br from-cyan-600 to-cyan-600 hover:from-cyan-600 hover:to-cyan-500 text-white font-semibold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-lg"
             >
               Create Post
             </button>
