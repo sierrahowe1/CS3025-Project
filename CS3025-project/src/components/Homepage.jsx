@@ -52,7 +52,7 @@ return (
                     </div>
 
                     <div className="mt-8 flex justify-center">
-                        <button onClick={onLogout} className="text-cyan-600 hover:text-cyan-700 font-medium text-sm underline">Logout</button>
+                        <button onClick={onLogout} className="text-cyan-600 hover:text-cyan-700 font-large text-sm underline">Logout</button>
                     </div>
 
                 </div>

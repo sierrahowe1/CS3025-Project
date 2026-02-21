@@ -190,7 +190,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         <div className="p-3 md:p-4">
           <button
             onClick={onLogout}
-            className="w-full text-cyan-700 hover:text-cyan-900 font-medium text-xs underline"
+            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
           >
             Logout
           </button>
