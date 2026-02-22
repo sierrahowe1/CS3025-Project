@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { HelpCircle, User, Clock, X, Menu } from 'lucide-react';
+import CreateAPost from './CreateAPost.jsx';
 
 export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showContactModal, setShowContactModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [doCreateAPost, setCreateAPost] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     title: '',
@@ -36,8 +38,8 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
     {
       id: 3,
       title: 'BAKING LESSONS',
-      needHelp: ['Someone to teach me how to make sourdough bread'],
-      canOffer: ['Help with gardening and planting'],
+      needHelp: ['Someone to teach me how to make sourdough bread '],
+      canOffer: ['Help with gardening and planting '],
       author: 'MARGARET',
       userType: 'Senior',
       timestamp: '1 day ago',
@@ -127,35 +129,29 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
 
       {/* Left Sidebar - Responsive */}
       <div className={`
-        fixed lg:static w-64 bg-gradient-to-br from-cyan-400 via-cyan-300 to-cyan-200 
+        fixed lg:static w-64 md:w-72 bg-gradient-to-br from-cyan-400 via-cyan-300 to-cyan-200
         flex flex-col h-screen transition-all duration-300 z-50
         ${isSidebarOpen ? 'left-0' : '-left-64 lg:left-0'}
       `}>
         {/* SSA Logo */}
         <div className="p-4 md:p-6">
           <div className="flex flex-col items-center">
-            <img src="src/Image.png" alt="SSA Logo" className="w-20 md:w-24 h-auto" />
+            <img src="src/Image.png" alt="Logo" className="w-24 md:w-32 h-auto" />
           </div>
         </div>
 
         {/* Navigation Buttons */}
         <div className="flex-1 flex flex-col px-3 md:px-4 py-4 md:py-8 space-y-3 md:space-y-4">
           <button
-            onClick={() => {
-              onNavigate('bulletin');
-              setIsSidebarOpen(false);
-            }}
-            className="bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left shadow-lg text-sm md:text-base"
+            onClick={() => { onNavigate('bulletin'); setIsSidebarOpen(false); }}
+            className="bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left transition-all shadow-md text-sm md:text-base"
           >
             BULLETIN BOARD
           </button>
 
           <div className="relative">
             <button
-              onClick={() => {
-                onNavigate('messaging');
-                setIsSidebarOpen(false);
-              }}
+              onClick={() => { onNavigate('messaging'); setIsSidebarOpen(false); }}
               className="w-full bg-white/90 hover:bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left transition-all shadow-md hover:shadow-lg text-sm md:text-base"
             >
               MESSAGING
@@ -166,10 +162,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
           </div>
 
           <button
-            onClick={() => {
-              onNavigate('account');
-              setIsSidebarOpen(false);
-            }}
+            onClick={() => { onNavigate('account'); setIsSidebarOpen(false); }}
             className="bg-white/90 hover:bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left transition-all shadow-md hover:shadow-lg text-sm md:text-base"
           >
             ACCOUNT
@@ -178,7 +171,10 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
 
         {/* Need Help Button */}
         <div className="p-3 md:p-4">
-          <button className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg">
+          <button
+            onClick={() => console.log('Help requested')}
+            className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
+          >
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
               <HelpCircle className="w-3 h-3 md:w-4 md:h-4" />
             </div>
@@ -186,11 +182,11 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
           </button>
         </div>
 
-        {/* Logout (for testing) */}
+        {/* Logout */}
         <div className="p-3 md:p-4">
           <button
             onClick={onLogout}
-            className="w-full text-cyan-700 hover:text-cyan-900 font-extralarge text-xs underline"
+            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
           >
             Logout
           </button>
@@ -198,9 +194,9 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       </div>
 
       {/* Main Content Area - Responsive */}
-      <div className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto relative mt-16 lg:mt-0">
+      <div className="flex-1 p-4 md:p-8 lg:p-8 overflow-y-auto relative mt-6 lg:mt-0">
         {/* Header - Responsive */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 md:mb-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-3 md:mb-4">
           <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900">
             COMMUNITY BULLETIN BOARD
           </h1>
@@ -218,8 +214,8 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         </div>
 
         {/* Posts Container with scrollbar - Responsive */}
-        <div className="w-full bg-gray-200 rounded-2xl md:rounded-3xl p-3 md:p-6 h-[calc(100vh-280px)] overflow-y-auto relative">
-          <div className="space-y-4 md:space-y-6 pr-2 md:pr-4">
+        <div className="w-full bg-gray-200 rounded-2xl border-2 border-gray-200 md:rounded-3xl p-3 md:p-6 pr-20 h-[calc(100vh-180px)] overflow-y-auto relative">
+          <div className="space-y-3 md:space-y-4 pr-2 md:pr-0">
             {filteredPosts.length === 0 ? (
               <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg p-6 md:p-12 text-center">
                 <p className="text-gray-500 text-base md:text-lg">No posts found in this category</p>
@@ -228,31 +224,34 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
               filteredPosts.map((post) => (
                 <div
                   key={post.id}
-                  className="bg-white rounded-2xl md:rounded-3xl shadow-lg p-4 md:p-6 relative"
+                  className="bg-white rounded-2xl md:rounded-3xl shadow-lg py-3 md:py-4 pr-2 md:pr-3 pl-4 md:pl-6 relative"
                 >
                   {/* Post Title */}
-                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
                     {post.title}
                   </h2>
 
-                  {/* Need Help Section */}
-                  <div className="mb-2 md:mb-3">
-                    <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I need help with:</p>
-                    {post.needHelp.map((item, index) => (
-                      <p key={index} className="text-gray-700 text-lg md:text-base">{item}</p>
-                    ))}
-                  </div>
+                  {/* Need Help & Can Offer Sections */}
+                  <div className="flex flex-col lg:flex-row gap-5">
+                    {/* Need Help Section */}
+                    <div className="flex-1">
+                      <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I need help with:</p>
+                      {post.needHelp.map((item, index) => (
+                        <p key={index} className="text-gray-700 text-lg md:text-base break-words text-justify">{item}</p>
+                      ))}
+                    </div>
 
-                  {/* Can Offer Section */}
-                  <div className="mb-3 md:mb-4">
-                    <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I can offer:</p>
-                    {post.canOffer.map((item, index) => (
-                      <p key={index} className="text-gray-700 text-lg md:text-base">{item}</p>
-                    ))}
+                    {/* Can Offer Section */}
+                    <div className="flex-1 px-4 text-justify">
+                      <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I can offer:</p>
+                      {post.canOffer.map((item, index) => (
+                        <p key={index} className="text-gray-700 text-lg md:text-base break-words text-justify">{item}</p>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Footer with user info and contact button - Responsive */}
-                  <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mt-4 md:mt-6">
+                  <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mt-2 md:mt-3">
                     <div className="flex flex-wrap items-center gap-2 md:gap-4">
                       {/* User */}
                       <div className="flex items-center gap-1 md:gap-2">
@@ -290,9 +289,9 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         </div>
 
         {/* Create Post Button - Responsive */}
-        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 lg:bottom-12 lg:right-12">
+        <div className="fixed bottom-0 right-4 md:bottom-2 md:right-8 lg:bottom-4 lg:right-12">
           <button
-            onClick={() => onNavigate('create')}
+            onClick={() => setCreateAPost(true)}
             className="bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-gray-900 font-bold py-3 md:py-4 px-6 md:px-8 rounded-full transition-all shadow-lg hover:shadow-xl text-sm md:text-base"
           >
             CREATE POST
@@ -303,20 +302,20 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       {/* Contact Modal - Responsive */}
       {showContactModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-cyan-600 rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-lg md:max-w-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
+          <div className="bg-cyan-400 rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-lg md:max-w-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
             {/* Close Button */}
             <button
               onClick={handleCloseModal}
-              className="absolute top-4 right-4 md:top-6 md:right-6 text-white hover:text-white transition-colors"
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <X className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             {/* Modal Header */}
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
               Contact {selectedPost?.author}
             </h2>
-            <p className="text-white mb-4 md:mb-6 text-sm md:text-base">
+            <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
               Regarding: {selectedPost?.title}
             </p>
 
@@ -324,7 +323,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
             <form onSubmit={handleSubmitContact} className="space-y-4 md:space-y-6">
               {/* Name Field */}
               <div>
-                <label htmlFor="name" className="block text-gray-700 font-semibold mb-1 md:mb-2 text-sm md:text-base">
+                <label htmlFor="name" className="block text-gray-800 font-semibold mb-1 md:mb-2 text-sm md:text-base">
                   Your Name
                 </label>
                 <input
@@ -333,14 +332,14 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
                   value={contactForm.name}
                   onChange={(e) => handleFormChange('name', e.target.value)}
                   required
-                  className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border-2 border-gray-300 focus:border-cyan-400 focus:outline-none transition-colors text-sm md:text-base"
+                  className="w-full bg-white text-gray-700 placeholder-gray-400 px-3 md:px-4 py-2 md:py-3 rounded-lg border-2 border-gray-200 focus:border-cyan-200 focus:outline-none transition-colors text-sm md:text-base"
                   placeholder="Enter your name"
                 />
               </div>
 
               {/* Title Field */}
               <div>
-                <label htmlFor="title" className="block text-white font-semibold mb-1 md:mb-2 text-sm md:text-base">
+                <label htmlFor="title" className="block text-gray-800 font-semibold mb-1 md:mb-2 text-sm md:text-base">
                   Message Title
                 </label>
                 <input
@@ -349,14 +348,14 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
                   value={contactForm.title}
                   onChange={(e) => handleFormChange('title', e.target.value)}
                   required
-                  className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border-2 border-gray-300 focus:border-cyan-400 focus:outline-none transition-colors text-sm md:text-base"
+                  className="w-full bg-white text-gray-700 placeholder-gray-400 px-3 md:px-4 py-2 md:py-3 rounded-lg border-2 border-gray-200 focus:border-cyan-200 focus:outline-none transition-colors text-sm md:text-base"
                   placeholder="Enter message title"
                 />
               </div>
 
               {/* Message Field */}
               <div>
-                <label htmlFor="message" className="block text-gray-700 font-semibold mb-1 md:mb-2 text-sm md:text-base">
+                <label htmlFor="message" className="block text-gray-800 font-semibold mb-1 md:mb-2 text-sm md:text-base">
                   Message Description
                 </label>
                 <textarea
@@ -365,7 +364,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
                   onChange={(e) => handleFormChange('message', e.target.value)}
                   required
                   rows={4}
-                  className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border-2 border-gray-300 focus:border-cyan-400 focus:outline-none transition-colors resize-none text-sm md:text-base"
+                  className="w-full bg-white text-gray-700 placeholder-gray-400 px-3 md:px-4 py-2 md:py-3 rounded-lg border-2 border-gray-200 focus:border-cyan-200 focus:outline-none transition-colors resize-none text-sm md:text-base"
                   placeholder="Enter your message"
                 />
               </div>
@@ -375,13 +374,13 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
                 <button
                   type="button"
                   onClick={handleCloseModal}
-                  className="w-full sm:w-auto px-6 md:px-8 py-2 md:py-3 rounded-full border-2 border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition-colors text-sm md:text-base"
+                  className="w-full bg-white hover:bg-gray-300 sm:w-auto px-6 md:px-8 py-2 md:py-3 rounded-full text-gray-800 font-semibold shadow-lg transition-colors text-md md:text-base"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 md:px-8 py-2 md:py-3 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-gray-900 font-bold transition-all shadow-md hover:shadow-lg text-sm md:text-base"
+                  className="w-full sm:w-auto px-6 md:px-8 py-2 md:py-3 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-600 hover:from-cyan-500 hover:to-cyan-500 text-white font-bold transition-all shadow-lg hover:shadow-xlg text-md md:text-base"
                 >
                   Send Message
                 </button>
@@ -390,6 +389,11 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
           </div>
         </div>
       )}
+      <CreateAPost
+        isOpen={doCreateAPost}
+        onClose={() => setCreateAPost(false)}
+      />
     </div>
+    
   );
 }
