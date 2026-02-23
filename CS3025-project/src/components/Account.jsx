@@ -62,7 +62,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
     }
   };
 
-  const handleViewPosts = () => 
+  const handleViewPosts = () => {
     onNavigate('currentPosts');
   };
 
