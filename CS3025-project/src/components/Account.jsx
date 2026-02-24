@@ -226,12 +226,6 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
                   <h2 className={`${currentHeadingSize} font-bold bg-gradient-to-r from-cyan-600 to-cyan-800 bg-clip-text text-transparent`}>
                     Personal Information
                   </h2>
-                  <button
-                    onClick={onLogout}
-                    className="bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105"
-                  >
-                    LOG OUT
-                  </button>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
