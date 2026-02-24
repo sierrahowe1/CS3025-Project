@@ -168,7 +168,7 @@ export default function App() {
       unread: true,
       contactInfo: newMessage.contactInfo || 'No contact info provided',
     };
-    setMessages(prev => [message, ...prev]); // Add to beginning of array
+    setSentMessages(prev => [message, ...prev]); // Add to beginning of array
     toast.success('Message sent!', {
       description: 'Your message has been sent successfully.',
     });
@@ -334,6 +334,7 @@ export default function App() {
           onOpenConversation={openConversation}
           sentMessages={sentMessages}
         />
+
       case 'account':
         return <Account
           onNavigate={handleNavigate} 
@@ -350,6 +351,7 @@ export default function App() {
           setPosts={setUserPosts} 
           messagesCount={messages.filter(m => m.unread).length}
         />
+
       case 'homepage':
       default:
         return <Homepage 
@@ -372,4 +374,3 @@ export default function App() {
     </>
   );
 }
-
