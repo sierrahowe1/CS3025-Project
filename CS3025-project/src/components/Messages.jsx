@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { HelpCircle, Menu, X } from 'lucide-react';
 import { toast } from 'sonner';
 import SingleMessage from './SingleMessage';
+import NeedHelp from './NeedHelp';
 
 export default function Messages({ onNavigate, onLogout, messages, setMessages, conversations, onCreateConversation, onOpenConversation, sentMessages }) {
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [activeTab, setActiveTab] = useState('inbox');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   const handleNeedHelp = () => {
     console.log('Help requested');
+    setShowHelp(true);
   };
 
   const handleMessageClick = (message) => {
@@ -359,6 +362,8 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
           onBack={handleBack}
         />
       )}
+
+      <NeedHelp isOpen={showHelp} onClose={() => setShowHelp(false)} />
     </div>
   );
 }
