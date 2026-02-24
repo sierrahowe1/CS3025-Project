@@ -192,7 +192,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
               <HelpCircle className="w-3 h-3 md:w-4 md:h-4" />
             </div>
-            <span className="text-xs md:text-sm">Need help?</span>
+            <span className="text-m md:text-m">Need help?</span>
           </button>
         </div>
 
@@ -200,7 +200,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
         <div className="p-3 md:p-4">
           <button
             onClick={onLogout}
-            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
+            className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             Logout
           </button>
@@ -430,7 +430,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-between">
               <button
-                onClick={() => onNavigate('yourPosts')}
+                onClick={() => onNavigate('currentPosts')}
                 className={`${currentTextSize} flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105`}
               >
                 <FileText className="w-5 h-5" />

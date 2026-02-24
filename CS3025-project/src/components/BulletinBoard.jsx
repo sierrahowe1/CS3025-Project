@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { HelpCircle, User, Clock, X, Menu } from 'lucide-react';
+import { toast } from 'sonner';
 import CreateAPost from './CreateAPost.jsx';
 
-export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount }) {
+export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount, onAddPost}) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showContactModal, setShowContactModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -14,7 +15,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
     message: ''
   });
 
-  const posts = [
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: 'YARD WORK',
@@ -65,7 +66,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       timestamp: '5 hours ago',
       category: 'Technology',
     },
-  ];
+  ]);
 
   // Filter posts based by category
   const filteredPosts = selectedCategory === 'all' 
@@ -99,6 +100,11 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
     });
     
     handleCloseModal();
+  };
+
+  const handleAddPost = (newPostData) => {
+    onAddPost(newPostData);
+    toast.success('Post created!');
   };
 
   const handleFormChange = (field, value) => {
@@ -178,7 +184,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
               <HelpCircle className="w-3 h-3 md:w-4 md:h-4" />
             </div>
-            <span className="text-xs md:text-sm">Need help?</span>
+            <span className="text-m md:text-m">Need help?</span>
           </button>
         </div>
 
@@ -186,7 +192,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         <div className="p-3 md:p-4">
           <button
             onClick={onLogout}
-            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
+            className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             Logout
           </button>
@@ -396,6 +402,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       <CreateAPost
         isOpen={doCreateAPost}
         onClose={() => setCreateAPost(false)}
+        onCreate={handleAddPost}
       />
     </div>
     
