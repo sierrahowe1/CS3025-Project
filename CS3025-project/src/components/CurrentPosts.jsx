@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { HelpCircle, User, Clock, X, Menu } from 'lucide-react';
 import { toast } from 'sonner';
 import CreateAPost from './CreateAPost.jsx';
+import NeedHelp from './NeedHelp.jsx';
 
 export default function YourPosts({ onNavigate, onLogout, posts, setPosts, messagesCount }) {
   const [editingPost, setEditingPost] = useState(null);
   const [doCreateAPost, setCreateAPost] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const [editForm, setEditForm] = useState({
     title: '',
     category: '',
@@ -149,7 +151,9 @@ export default function YourPosts({ onNavigate, onLogout, posts, setPosts, messa
         {/* Need Help Button */}
         <div className="p-3 md:p-4">
           <button
-            onClick={() => console.log('Help requested')}
+            onClick={() => {
+              console.log('Help requested');
+              setShowHelp(true);}}
             className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
@@ -323,6 +327,8 @@ export default function YourPosts({ onNavigate, onLogout, posts, setPosts, messa
             onClose={() => setCreateAPost(false)}
             onCreate={handleAddPost}
         />
+
+        <NeedHelp isOpen={showHelp} onClose={() => setShowHelp(false)} />
     </div>
   );
 }

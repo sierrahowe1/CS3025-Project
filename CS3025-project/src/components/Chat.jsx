@@ -3,6 +3,7 @@ import { ArrowLeft, Send } from 'lucide-react';
 
 export default function Chat({ conversation, onBack, onSendMessage }) {
   const [newMessage, setNewMessage] = useState('');
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

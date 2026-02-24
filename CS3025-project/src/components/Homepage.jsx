@@ -3,12 +3,15 @@ import { HelpCircle } from "lucide-react";
 import {useState} from 'react';
 import { toast } from 'sonner';
 import CreateAPost from "./CreateAPost.jsx";
+import NeedHelp from "./NeedHelp.jsx";
 
 export default function Homepage({ userName, onLogout, onNavigate, onAddPost}) {
     const [doCreateAPost, setCreateAPost] = useState(false);
+    const [showHelp, setShowHelp] = useState(false);
 
     const handleNeedHelp = () => {
         console.log("Requesting help...");
+        setShowHelp(true);
     };
 
     const handleAddPost = (newPostData) => {
@@ -70,6 +73,8 @@ return (
                 onClose={() => setCreateAPost(false)}
                 onCreate={handleAddPost}
             />
+
+            <NeedHelp isOpen={showHelp} onClose={() => setShowHelp(false)}/>
         </div>
 );
 

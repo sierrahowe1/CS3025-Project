@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { HelpCircle, User, Clock, X, Menu } from 'lucide-react';
 import { toast } from 'sonner';
 import CreateAPost from './CreateAPost.jsx';
+import NeedHelp from './NeedHelp.jsx';
 
 export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount, onAddPost}) {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -9,6 +10,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
   const [selectedPost, setSelectedPost] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [doCreateAPost, setCreateAPost] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: '',
     title: '',
@@ -18,57 +20,57 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
   const [posts, setPosts] = useState([
     {
       id: 1,
-      title: 'YARD WORK',
-      needHelp: ['Raking my leaves'],
-      canOffer: ['A home cooked meal'],
-      author: 'SHARON',
+      title: 'YARD WORK HELP',
+      needHelp: ['I need help with yard work this weekend'],
+      canOffer: ['Baking lessons'],
+      author: 'MARGARET',
       userType: 'Senior',
       timestamp: '2 hours ago',
       category: 'Physical Labour',
     },
     {
       id: 2,
-      title: 'ASSEMBLE FURNITURE',
-      needHelp: ['I have some Ikea furniture that I need help assembling'],
-      canOffer: ['A ride to the grocery store to pick up groceries'],
-      author: 'ROBERT',
+      title: 'TECHNOLOGY ASSISTANCE',
+      needHelp: ['I need help setting up my new smartphone'],
+      canOffer: ['Cooking lessons'],
+      author: 'GRANT',
       userType: 'Senior',
       timestamp: '6 hours ago',
-      category: 'Physical Labour',
+      category: 'Technology',
     },
     {
       id: 3,
-      title: 'BAKING LESSONS',
-      needHelp: ['Someone to teach me how to make sourdough bread '],
-      canOffer: ['Help with gardening and planting '],
-      author: 'MARGARET',
+      title: 'SOMEONE TO CHAT WITH',
+      needHelp: ['Someone to keep me company and chat with on weekends'],
+      canOffer: ['Help with homework and tutoring in various subjects'],
+      author: 'ANN',
       userType: 'Senior',
       timestamp: '1 day ago',
-      category: 'Cooking',
+      category: 'Companionship',
     },
     {
       id: 4,
-      title: 'KNITTING PROJECT',
-      needHelp: ['Help finishing a sweater I started'],
-      canOffer: ['Piano lessons'],
-      author: 'LINDA',
+      title: 'STYLE HELP',
+      needHelp: ['Help choosing outfits for an upcoming event'],
+      canOffer: ['Assist with knitting projects and teach basic knitting skills'],
+      author: 'CATHERINE',
       userType: 'Senior',
       timestamp: '3 hours ago',
-      category: 'Crafts',
+      category: 'Companionship',
     },
     {
       id: 5,
-      title: 'SMARTPHONE HELP',
-      needHelp: ['Learning how to use my new iPhone'],
-      canOffer: ['Homemade cookies'],
-      author: 'GEORGE',
+      title: 'CLEANING HELP',
+      needHelp: ['I need help with cleaning my house this weekend'],
+      canOffer: ['Help with some school subjects and tutoring in various subjects'],
+      author: 'PAULA',
       userType: 'Senior',
       timestamp: '5 hours ago',
-      category: 'Technology',
+      category: 'Physical Labour',
     },
   ]);
 
-  // Filter posts based by category
+    // Filter posts based by category
   const filteredPosts = selectedCategory === 'all' 
     ? posts 
     : posts.filter(post => post.category === selectedCategory);
@@ -178,7 +180,9 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         {/* Need Help Button */}
         <div className="p-3 md:p-4">
           <button
-            onClick={() => console.log('Help requested')}
+            onClick={() => {
+              console.log('Help requested');
+              setShowHelp(true);}}
             className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
@@ -404,6 +408,8 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         onClose={() => setCreateAPost(false)}
         onCreate={handleAddPost}
       />
+
+      <NeedHelp isOpen={showHelp} onClose={() => setShowHelp(false)} />
     </div>
     
   );
