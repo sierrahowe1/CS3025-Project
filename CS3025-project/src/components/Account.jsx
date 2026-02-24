@@ -354,8 +354,11 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
                     />
                   </div>
                 </div>
+<<<<<<< HEAD
 
                 
+=======
+>>>>>>> 49a64d2a9bf23906d73fff167de925ad3fa1ffa7
               </div>
 
               {/* Preferences Section */}
