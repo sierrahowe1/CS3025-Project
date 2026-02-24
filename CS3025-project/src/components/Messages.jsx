@@ -161,7 +161,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
             <div className="flex flex-wrap gap-2 md:gap-4">
               <button
                 onClick={() => setActiveTab('inbox')}
-                className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold transition-all text-sm md:text-base ${
+                className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold transition-all text-lg md:text-base ${
                   activeTab === 'inbox'
                     ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 shadow-md'
                     : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
@@ -171,7 +171,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
               </button>
               <button
                 onClick={() => setActiveTab('conversations')}
-                className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold transition-all text-sm md:text-base ${
+                className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold transition-all text-lg md:text-base ${
                   activeTab === 'conversations'
                     ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 shadow-md'
                     : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
@@ -181,7 +181,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
               </button>
               <button 
                 onClick={() => setActiveTab('sent')} 
-                className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold transition-all text-sm md:text-base ${
+                className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold transition-all text-lg md:text-base ${
                   activeTab === 'sent'
                     ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 shadow-md'
                     : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
@@ -199,7 +199,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
               <>
                 {messages.length === 0 ? (
                   <div className="w-full bg-white rounded-2xl md:rounded-3xl shadow-lg p-6 md:p-12 text-center">
-                    <p className="text-gray-500 text-base md:text-lg">No messages in your inbox</p>
+                    <p className="text-gray-500 text-base md:text-2xl">No messages in your inbox</p>
                   </div>
                 ) : (
                   <div className="w-full space-y-4 md:space-y-6">
@@ -227,11 +227,11 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
                           <div className="flex-1 min-w-0 w-full">
                             {/* Sender Name */}
                             <div className="inline-block bg-gray-700 text-white px-3 md:px-4 py-1 rounded-full mb-2 md:mb-3">
-                              <span className="font-semibold text-xs md:text-sm">{message.sender}</span>
+                              <span className="font-semibold text-lg md:text-lg">{message.sender}</span>
                             </div>
 
                             {/* Message Preview */}
-                            <p className="text-gray-500 text-sm md:text-base bg-gray-100 rounded-xl md:rounded-2xl px-3 md:px-4 py-2 md:py-3">
+                            <p className="text-gray-500 text-lg md:text-base bg-gray-100 rounded-xl md:rounded-2xl px-3 md:px-4 py-2 md:py-3">
                               {message.preview}
                             </p>
                           </div>
@@ -253,8 +253,8 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
               <>
                 {conversations.length === 0 ? (
                   <div className="w-full bg-white rounded-2xl md:rounded-3xl shadow-lg p-6 md:p-12 text-center">
-                    <p className="text-gray-500 text-base md:text-lg">No active conversations</p>
-                    <p className="text-gray-400 text-xs md:text-sm mt-2">Accept messages from your inbox to start chatting</p>
+                    <p className="text-gray-500 text-xl md:text-xl">No active conversations</p>
+                    <p className="text-gray-400 text-lg md:text-lg mt-2">Accept messages from your inbox to start chatting</p>
                   </div>
                 ) : (
                   <div className="w-full space-y-4 md:space-y-6">
