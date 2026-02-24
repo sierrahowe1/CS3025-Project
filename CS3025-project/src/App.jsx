@@ -16,48 +16,48 @@ export default function App() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      sender: 'Melissa Smith',
-      preview: 'Hello Sharon, I wanted to contact you regarding some baking...',
-      fullMessage: 'Hello Sharon, I wanted to contact you regarding your baking inquiry. I saw your post about making traditional sourdough bread and I would love to learn from you. I have been trying to perfect my starter for months now. Would you be available for a baking session sometime this week? I would love to accept your help with some cleaning.',
-      timestamp: '5 hours ago',
+      sender: 'Margret Plum',
+      preview: 'Hello Greg, I wanted to contact you regarding your history homework...',
+      fullMessage: 'Hello Greg, I wanted to contact you regarding your history homework. I saw your post about studying for a history test and I am also preparing for the same test. I have some great study materials and flashcards that I think could really help you out. I would love to teach you some cords on the guitar in exchange. Would you like to meet up and study together?',
+      timestamp: '7 hours ago',
       unread: false,
       
     },
     {
       id: 2,
-      sender: 'Jane Doe',
-      preview: 'Hello Sharon, I wanted to contact you regarding some knitting...',
-      fullMessage: 'Hello Sharon, I wanted to contact you regarding some knitting. I noticed you mentioned you knit beautiful sweaters and I am just getting started with knitting. I would really appreciate some guidance on choosing the right yarn and needles for a beginner project. Do you offer any knitting lessons?',
+      sender: 'John Doe',
+      preview: 'Hello Greg, I wanted to contact you regarding some driving...',
+      fullMessage: 'Hello Sharon, I wanted to contact some driving lessons you wanted to take up. I noticed you mentioned you recently bought a car with manual transmission. I have been driving stick shift for years and would be happy to help you get more comfortable with it. I can also wash and detail your car as part of the deal! Let me know if you are interested.',
       timestamp: '10 hours ago',
       unread: true,
-      contactInfo: 'jane.doe@email.com',
+      
     },
     {
       id: 3,
-      sender: 'Paige Bueckers',
-      preview: 'Hello Sharon, I wanted to contact you regarding some cooking...',
-      fullMessage: 'Hello Sharon, I wanted to contact you regarding some cooking. I heard you make the most amazing Italian dishes! I am hosting a dinner party next month and would love to get some of your secret recipes, especially for your famous lasagna. Would you be willing to share some tips?',
+      sender: 'Ann Smith',
+      preview: 'Hello Greg, I wanted to contact you regarding some cooking...',
+      fullMessage: 'Hello Greg, I wanted to contact you regarding some cooking. I heard you want to learn how to make the most amazing Italian dishes! I have a lot of experience cooking Italian food and I would love to share some of my recipes with you. I can teach you how to make a delicious lasagna in exchange for some help with gardening work. Let me know if you are interested in learning how to cook together!',
       timestamp: '23 hours ago',
       unread: true,
-      contactInfo: 'paige.bueckers@email.com',
+      
     },
     {
       id: 4,
-      sender: 'Sarah Strong',
-      preview: 'Hello Sharon, I wanted to contact you regarding some needlepoint...',
-      fullMessage: 'Hello Sharon, I wanted to contact you regarding some needlepoint. Your needlepoint work is absolutely stunning! I saw the photo you shared of the floral cushion cover and I am inspired to learn this craft. Could we perhaps meet up so you could show me the basic stitches and techniques?',
+      sender: 'Betty Davis',
+      preview: 'Hello Greg, I wanted to contact you regarding some crochet...',
+      fullMessage: 'Hello Greg, I wanted to contact you regarding some crochet. I noticed you have been wanting to learn how to crochet for a while now. I have some experience I think that would be a great skill exchange for driving me to a medical appointment I have. Let me know if you are interested in learning together!',
       timestamp: '14 hours ago',
       unread: true,
-      contactInfo: 'sarah.strong@email.com',
+      
     },
     {
       id: 5,
-      sender: 'Azzi Fudd',
-      preview: 'Hello Sharon, I wanted to contact you regarding some baking using cottage cheese...',
-      fullMessage: 'Hello Sharon, I wanted to contact you regarding some baking using cottage cheese. I have recently become very interested in healthier baking options and I understand you have some wonderful recipes that incorporate cottage cheese. I would love to learn more about this technique and maybe even bake together!',
+      sender: 'Susan Boyle',
+      preview: 'Hello Greg, I wanted to contact you regarding your math homework...',
+      fullMessage: 'Hello Greg, I wanted to contact you regarding your math homework. I saw your post about struggling with a math assignment and I think I can help you out. I have a strong background in math and I would be happy to tutor you. In exchange, I would love to learn how to use my computer better. Let me know if you are interested in working together on your math homework!',
       timestamp: '18 hours ago',
       unread: true,
-      contactInfo: 'azzi.fudd@email.com',
+      
     },
   ]);
 
@@ -75,7 +75,7 @@ export default function App() {
       id: 2,
       title: 'LEARNING TO COOK',
       needHelp: ['I would like to learn how to cook lasagna'],
-      canOffer: ['I could do some laundry or dishes for you'],
+      canOffer: ['I could do some gardening work for you.'],
       author: 'YOU',
       timestamp: '6 hours ago',
       category: 'Cooking',
