@@ -18,10 +18,10 @@ export default function App() {
       id: 1,
       sender: 'Melissa Smith',
       preview: 'Hello Sharon, I wanted to contact you regarding some baking...',
-      fullMessage: 'Hello Sharon, I wanted to contact you regarding some baking. I saw your post about making traditional sourdough bread and I would love to learn from you. I have been trying to perfect my starter for months now. Would you be available for a baking session sometime this week?',
+      fullMessage: 'Hello Sharon, I wanted to contact you regarding your baking inquiry. I saw your post about making traditional sourdough bread and I would love to learn from you. I have been trying to perfect my starter for months now. Would you be available for a baking session sometime this week? I would love to accept your help with some cleaning.',
       timestamp: '5 hours ago',
       unread: false,
-      contactInfo: 'melissa.smith@email.com',
+      
     },
     {
       id: 2,
