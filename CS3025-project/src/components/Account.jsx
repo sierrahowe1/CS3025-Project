@@ -359,6 +359,13 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
                     />
                   </div>
                 </div>
+
+                <button
+                  onClick={() => onNavigate('currentPosts')}
+                  className={`${currentTextSize} mt-4 sm:mt-6 w-full sm:w-auto bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all shadow-md`}
+                >
+                  VIEW YOUR POSTS
+                </button>
               </div>
 
               {/* Preferences Section */}

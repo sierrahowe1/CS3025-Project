@@ -21,9 +21,10 @@ export default function CreateAPost ({ isOpen, onClose, onCreate }) {
         'Technology',
         'Other'
     ];
-
+    
     const handleSubmit = (e) => {
       e.preventDefault();
+      console.log("FORM SUBMITTED");
 
       if (!category) {
         toast.error('Please select a category.');
