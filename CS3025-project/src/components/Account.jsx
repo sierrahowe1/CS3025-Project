@@ -359,13 +359,6 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
                     />
                   </div>
                 </div>
-
-                <button
-                  onClick={() => onNavigate('currentPosts')}
-                  className={`${currentTextSize} mt-4 sm:mt-6 w-full sm:w-auto bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all shadow-md`}
-                >
-                  VIEW YOUR POSTS
-                </button>
               </div>
 
               {/* Preferences Section */}
@@ -437,7 +430,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-between">
               <button
-                onClick={() => onNavigate('yourPosts')}
+                onClick={() => onNavigate('currentPosts')}
                 className={`${currentTextSize} flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105`}
               >
                 <FileText className="w-5 h-5" />
