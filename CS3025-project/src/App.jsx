@@ -107,7 +107,7 @@ export default function App() {
       unread: true,
       contactInfo: newMessage.contactInfo || 'No contact info provided',
     };
-    setMessages(prev => [message, ...prev]); // Add to beginning of array
+    setSentMessages(prev => [message, ...prev]); // Add to beginning of array
     toast.success('Message sent!', {
       description: 'Your message has been sent successfully.',
     });
