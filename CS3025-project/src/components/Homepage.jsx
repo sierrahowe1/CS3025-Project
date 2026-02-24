@@ -1,13 +1,19 @@
 
 import { HelpCircle } from "lucide-react";
 import {useState} from 'react';
+import { toast } from 'sonner';
 import CreateAPost from "./CreateAPost.jsx";
 
-export default function Homepage({ userName, onLogout, onNavigate}) {
+export default function Homepage({ userName, onLogout, onNavigate, onAddPost}) {
     const [doCreateAPost, setCreateAPost] = useState(false);
 
     const handleNeedHelp = () => {
         console.log("Requesting help...");
+    };
+
+    const handleAddPost = (newPostData) => {
+        onAddPost(newPostData);
+        toast.success('Post created!');
     };
 
 return (
@@ -52,16 +58,18 @@ return (
                     </div>
 
                     <div className="mt-8 flex justify-center">
-                        <button onClick={onLogout} className="text-cyan-600 hover:text-cyan-700 font-large text-sm underline">Logout</button>
+                        <button onClick={onLogout} className="flex items-center gap-3 bg-cyan-300 hover:bg-gray-300 text-gray-800 font-x-large px-8 py-5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">Logout</button>
                     </div>
 
                 </div>
 
             </div>
 
-        <CreateAPost
-        isOpen={doCreateAPost}
-        onClose={() => setCreateAPost(false)}/>
+            <CreateAPost
+                isOpen={doCreateAPost}
+                onClose={() => setCreateAPost(false)}
+                onCreate={handleAddPost}
+            />
         </div>
 );
 

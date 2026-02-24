@@ -3,7 +3,7 @@ import { HelpCircle, User, Clock, X, Menu } from 'lucide-react';
 import { toast } from 'sonner';
 import CreateAPost from './CreateAPost.jsx';
 
-export default function YourPosts({ onNavigate, onLogout, posts, onEditPost, onDeletePost, messagesCount }) {
+export default function YourPosts({ onNavigate, onLogout, posts, setPosts, messagesCount }) {
   const [editingPost, setEditingPost] = useState(null);
   const [doCreateAPost, setCreateAPost] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -13,56 +13,10 @@ export default function YourPosts({ onNavigate, onLogout, posts, onEditPost, onD
     needHelp: '',
     canOffer: ''
   });
-  const [flexposts, setPosts] = useState([
-    {
-      id: 1,
-      title: 'HISTORY HOMEWORK',
-      needHelp: ['Studying for my history test'],
-      canOffer: ['Guitar lessons'],
-      author: 'YOU',
-      timestamp: '2 hours ago',
-      category: 'Other',
-    },
-    {
-      id: 2,
-      title: 'LEARNING TO COOK',
-      needHelp: ['I would like to learn how to cook lasagna'],
-      canOffer: ['I could do some laundry or dishes for you'],
-      author: 'YOU',
-      timestamp: '6 hours ago',
-      category: 'Cooking',
-    },
-    {
-      id: 3,
-      title: 'LEARN TO DRIVE STICK SHIFT',
-      needHelp: ['I recently bought a car with manual transmission. I can get around, but would like help to get better.'],
-      canOffer: ['I could wash your car and detail the interior.'],
-      author: 'YOU',
-      timestamp: '1 day ago',
-      category: 'Physical Labour',
-    },
-    {
-      id: 4,
-      title: 'CROCHET',
-      needHelp: ['I would love to learn how to crochet.'],
-      canOffer: ['A ride to some medical appointments.'],
-      author: 'YOU',
-      timestamp: '3 hours ago',
-      category: 'Crafts',
-    },
-    {
-      id: 5,
-      title: 'MATH HOMEWORK',
-      needHelp: ['I have a math assignment that I am struggling with'],
-      canOffer: ['Teach you how to use your computer'],
-      author: 'YOU',
-      timestamp: '5 hours ago',
-      category: 'Technology',
-    },
-  ]);
+
 
   // Filter to show only user's posts
-  const userPosts = flexposts.filter(post => post.author === 'YOU');
+  const userPosts = posts.filter(post => post.author === 'YOU');
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   const handleAddPost = (newPostData) => {
@@ -209,7 +163,7 @@ export default function YourPosts({ onNavigate, onLogout, posts, onEditPost, onD
         <div className="p-3 md:p-4">
           <button
             onClick={onLogout}
-            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
+            className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             Logout
           </button>

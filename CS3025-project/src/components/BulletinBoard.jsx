@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { HelpCircle, User, Clock, X, Menu } from 'lucide-react';
+import { toast } from 'sonner';
 import CreateAPost from './CreateAPost.jsx';
 
-export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount }) {
+export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount, onAddPost}) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showContactModal, setShowContactModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -67,7 +68,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
     },
   ];
 
-  // Filter posts based by category
+    // Filter posts based by category
   const filteredPosts = selectedCategory === 'all' 
     ? posts 
     : posts.filter(post => post.category === selectedCategory);
@@ -99,6 +100,11 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
     });
     
     handleCloseModal();
+  };
+
+  const handleAddPost = (newPostData) => {
+    onAddPost(newPostData);
+    toast.success('Post created!');
   };
 
   const handleFormChange = (field, value) => {
@@ -178,7 +184,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
               <HelpCircle className="w-3 h-3 md:w-4 md:h-4" />
             </div>
-            <span className="text-xs md:text-sm">Need help?</span>
+            <span className="text-m md:text-m">Need help?</span>
           </button>
         </div>
 
@@ -186,7 +192,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         <div className="p-3 md:p-4">
           <button
             onClick={onLogout}
-            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
+            className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             Logout
           </button>
@@ -203,7 +209,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full md:w-auto px-4 md:px-6 py-2 rounded-lg border-2 border-gray-300 bg-white text-gray-700 font-large focus:outline-none focus:border-cyan-400 text-sm md:text-base"
+            className="w-full md:w-auto px-4 md:px-6 py-2 rounded-lg border-2 border-gray-300 bg-white text-gray-700 font-medium focus:outline-none focus:border-cyan-400 text-sm md:text-base"
           >
             <option value="all">All Categories</option>
             <option value="Physical Labour">Physical Labour</option>
@@ -222,7 +228,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
           <div className="space-y-3 md:space-y-4 pr-2 md:pr-0">
             {filteredPosts.length === 0 ? (
               <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg p-6 md:p-12 text-center">
-                <p className="text-gray-500 text-base md:text-2xl">No posts found in this category</p>
+                <p className="text-gray-500 text-base md:text-lg">No posts found in this category</p>
               </div>
             ) : (
               filteredPosts.map((post) => (
@@ -239,7 +245,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
                   <div className="flex flex-col lg:flex-row gap-5">
                     {/* Need Help Section */}
                     <div className="flex-1">
-                      <p className="text-gray-700 font-semibold mb-1 text-xl md:text-base">I need help with:</p>
+                      <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I need help with:</p>
                       {post.needHelp.map((item, index) => (
                         <p key={index} className="text-gray-700 text-lg md:text-base break-words text-justify">{item}</p>
                       ))}
@@ -247,9 +253,9 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
 
                     {/* Can Offer Section */}
                     <div className="flex-1 px-4 text-justify">
-                      <p className="text-gray-700 font-semibold mb-1 text-xl md:text-base">I can offer:</p>
+                      <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I can offer:</p>
                       {post.canOffer.map((item, index) => (
-                        <p key={index} className="text-gray-700 text-xl md:text-base break-words text-justify">{item}</p>
+                        <p key={index} className="text-gray-700 text-lg md:text-base break-words text-justify">{item}</p>
                       ))}
                     </div>
                   </div>
@@ -260,7 +266,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
                       {/* User */}
                       <div className="flex items-center gap-1 md:gap-2">
                         <User className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
-                        <span className="font-bold text-gray-900 text-lg md:text-base">{post.author}</span>
+                        <span className="font-bold text-gray-900 text-sm md:text-base">{post.author}</span>
                         <span className="bg-cyan-300 text-gray-900 px-2 md:px-3 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium">
                           {post.userType}
                         </span>
@@ -269,11 +275,11 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
                       {/* Timestamp */}
                       <div className="flex items-center gap-1 md:gap-2">
                         <Clock className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
-                        <span className="text-gray-700 text-lg md:text-base">{post.timestamp}</span>
+                        <span className="text-gray-700 text-sm md:text-base">{post.timestamp}</span>
                       </div>
 
                       {/* Category Badge */}
-                      <span className="bg-cyan-300 text-gray-900 px-2 md:px-3 py-0.5 md:py-1 rounded-full text-lg md:text-sm font-medium">
+                      <span className="bg-cyan-300 text-gray-900 px-2 md:px-3 py-0.5 md:py-1 rounded-full text-xs md:text-sm font-medium">
                         {post.category}
                       </span>
                     </div>
@@ -396,6 +402,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       <CreateAPost
         isOpen={doCreateAPost}
         onClose={() => setCreateAPost(false)}
+        onCreate={handleAddPost}
       />
     </div>
     

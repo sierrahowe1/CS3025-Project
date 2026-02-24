@@ -16,11 +16,12 @@ export default function App() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      sender: 'Will Smith',
-      preview: 'Hello Joe, I wanted to contact you regarding the yard work...',
-      fullMessage: 'Hello Joe, I wanted to contact you regarding the yard work you need help with. I have experience with landscaping and gardening, and I would be happy to lend a hand. I can help with tasks such as mowing the lawn, trimming bushes, and planting flowers. Please let me know if you would like to discuss further or schedule a time for me to come by.',
+      sender: 'Melissa Smith',
+      preview: 'Hello Sharon, I wanted to contact you regarding some baking...',
+      fullMessage: 'Hello Sharon, I wanted to contact you regarding some baking. I saw your post about making traditional sourdough bread and I would love to learn from you. I have been trying to perfect my starter for months now. Would you be available for a baking session sometime this week?',
       timestamp: '5 hours ago',
       unread: false,
+      contactInfo: 'melissa.smith@email.com',
     },
     {
       id: 2,
@@ -60,10 +61,83 @@ export default function App() {
     },
   ]);
 
+    const [userPosts, setUserPosts] = useState([
+    {
+      id: 1,
+      title: 'HISTORY HOMEWORK',
+      needHelp: ['Studying for my history test'],
+      canOffer: ['Guitar lessons'],
+      author: 'YOU',
+      timestamp: '2 hours ago',
+      category: 'Other',
+    },
+    {
+      id: 2,
+      title: 'LEARNING TO COOK',
+      needHelp: ['I would like to learn how to cook lasagna'],
+      canOffer: ['I could do some laundry or dishes for you'],
+      author: 'YOU',
+      timestamp: '6 hours ago',
+      category: 'Cooking',
+    },
+    {
+      id: 3,
+      title: 'LEARN TO DRIVE STICK SHIFT',
+      needHelp: ['I recently bought a car with manual transmission. I can get around, but would like help to get better.'],
+      canOffer: ['I could wash your car and detail the interior.'],
+      author: 'YOU',
+      timestamp: '1 day ago',
+      category: 'Physical Labour',
+    },
+    {
+      id: 4,
+      title: 'CROCHET',
+      needHelp: ['I would love to learn how to crochet.'],
+      canOffer: ['A ride to some medical appointments.'],
+      author: 'YOU',
+      timestamp: '3 hours ago',
+      category: 'Crafts',
+    },
+    {
+      id: 5,
+      title: 'MATH HOMEWORK',
+      needHelp: ['I have a math assignment that I am struggling with'],
+      canOffer: ['Teach you how to use your computer'],
+      author: 'YOU',
+      timestamp: '5 hours ago',
+      category: 'Technology',
+    },
+  ]);
+
+  const handleAddUserPost = (newPostData) => {
+    const newPost = {
+      id: Date.now(),
+      title: newPostData.title.toUpperCase(),
+      needHelp: [newPostData.seeking],
+      canOffer: [newPostData.canOffer],
+      category: newPostData.category,
+      author: 'YOU',
+      timestamp: 'Just now',
+    };
+
+    setUserPosts(prev => [newPost, ...prev]);
+  };
+
+  const handleEditUserPost = (postId, updatedPost) => {
+    setUserPosts(prev =>
+      prev.map(post => post.id === postId ? updatedPost : post)
+    );
+  };
+
+  const handleDeleteUserPost = (postId) => {
+    setUserPosts(prev =>
+      prev.filter(post => post.id !== postId)
+    );
+  };
+
   const [conversations, setConversations] = useState([]);
   const [activeConversation, setActiveConversation] = useState(null);
   const [sentMessages, setSentMessages] = useState([]);
-  const [posts, setPosts] = useState([]);
 
   const handleLogin = (user) => {
     setLoggedIn(true);
@@ -77,18 +151,6 @@ export default function App() {
     toast.info("Logged out successfully!", {
       description: "You have logged out of your account.",
     });
-  };
-
-  const handleEditPost = (postId, updatedPost) => {
-    setPosts(prev =>
-      prev.map(post => post.id === postId ? updatedPost : post)
-    );
-  };
-
-  const handleDeletePost = (postId) => {
-    setPosts(prev =>
-      prev.filter(post => post.id !== postId)
-    );
   };
 
   const handleNavigate = (page) => {
@@ -259,6 +321,7 @@ export default function App() {
           onLogout={handleLogout} 
           onAddMessage={addMessage} 
           messagesCount={messages.filter(m => m.unread).length} 
+          onAddPost={handleAddUserPost}
         />
       case 'messaging': 
         return <Messages 
@@ -280,20 +343,23 @@ export default function App() {
           userEmail={credentials?.email}
           messagesCount={messages.filter(m => m.unread).length}
         />
-  
-      case 'yourPosts':
+      case 'currentPosts':
         return <CurrentPosts
           onNavigate={handleNavigate}
           onLogout={handleLogout}
-          posts={posts}
-          onEditPost={handleEditPost}
-          onDeletePost={handleDeletePost}
+          posts={userPosts}
+          setPosts={setUserPosts} 
           messagesCount={messages.filter(m => m.unread).length}
         />
 
       case 'homepage':
       default:
-        return <Homepage userName={credentials?.name} onLogout={handleLogout} onNavigate={handleNavigate} />
+        return <Homepage 
+          userName={credentials?.name} 
+          onLogout={handleLogout} 
+          onNavigate={handleNavigate} 
+          onAddPost={handleAddUserPost}
+        />
     }
   };
 
