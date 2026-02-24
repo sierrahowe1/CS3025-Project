@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { HelpCircle, User, Clock, X, Menu } from 'lucide-react';
+import { toast } from 'sonner';
 import CreateAPost from './CreateAPost.jsx';
 
-export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount }) {
+export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, messagesCount, onAddPost}) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showContactModal, setShowContactModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -14,7 +15,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
     message: ''
   });
 
-  const posts = [
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: 'YARD WORK',
@@ -65,7 +66,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       timestamp: '5 hours ago',
       category: 'Technology',
     },
-  ];
+  ]);
 
   // Filter posts based by category
   const filteredPosts = selectedCategory === 'all' 
@@ -99,6 +100,11 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
     });
     
     handleCloseModal();
+  };
+
+  const handleAddPost = (newPostData) => {
+    onAddPost(newPostData);
+    toast.success('Post created!');
   };
 
   const handleFormChange = (field, value) => {
@@ -396,6 +402,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       <CreateAPost
         isOpen={doCreateAPost}
         onClose={() => setCreateAPost(false)}
+        onCreate={handleAddPost}
       />
     </div>
     

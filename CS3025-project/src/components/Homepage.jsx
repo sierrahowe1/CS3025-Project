@@ -1,13 +1,19 @@
 
 import { HelpCircle } from "lucide-react";
 import {useState} from 'react';
+import { toast } from 'sonner';
 import CreateAPost from "./CreateAPost.jsx";
 
-export default function Homepage({ userName, onLogout, onNavigate}) {
+export default function Homepage({ userName, onLogout, onNavigate, onAddPost}) {
     const [doCreateAPost, setCreateAPost] = useState(false);
 
     const handleNeedHelp = () => {
         console.log("Requesting help...");
+    };
+
+    const handleAddPost = (newPostData) => {
+        onAddPost(newPostData);
+        toast.success('Post created!');
     };
 
 return (
@@ -59,9 +65,11 @@ return (
 
             </div>
 
-        <CreateAPost
-        isOpen={doCreateAPost}
-        onClose={() => setCreateAPost(false)}/>
+            <CreateAPost
+                isOpen={doCreateAPost}
+                onClose={() => setCreateAPost(false)}
+                onCreate={handleAddPost}
+            />
         </div>
 );
 
