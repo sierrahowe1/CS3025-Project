@@ -216,14 +216,14 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
           <div className="max-w-7xl mx-auto space-y-6">
             
             {/* Personal Information Section */}
-            <div className="bg-gradient-to-br from-cyan-50 via-white to-cyan-50 rounded-3xl p-8 shadow-xl border border-cyan-100 relative overflow-hidden">
+            <div className="bg-gradient-to-br from-cyan-100 to-cyan-100 rounded-3xl p-8 shadow-xl border border-cyan-100 relative overflow-hidden">
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-cyan-200/20 to-transparent rounded-full blur-3xl -z-0" />
               
               <div className="relative z-10">
                 {/* Header with Logout */}
                 <div className="flex justify-between items-start mb-8">
-                  <h2 className={`${currentHeadingSize} font-bold bg-gradient-to-r from-cyan-600 to-cyan-800 bg-clip-text text-transparent`}>
+                  <h2 className={`${currentHeadingSize} font-bold bg-gradient-to-r from-cyan-600 to-cyan-600 bg-clip-text text-transparent`}>
                     Personal Information
                   </h2>
                 </div>
@@ -261,8 +261,8 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
 
                   {/* Edit Form */}
                   <div className="bg-white rounded-2xl p-6 shadow-lg">
-                    <h3 className={`${currentHeadingSize} font-bold text-cyan-600 mb-6`}>
-                      EDIT INFO
+                    <h3 className={`${currentHeadingSize} font-bold text-black mb-6`}>
+                      Edit Info
                     </h3>
                     <div className="space-y-5">
                       <div>
@@ -308,7 +308,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Change Password Section */}
-              <div className="bg-gradient-to-br from-cyan-50 via-white to-cyan-50 rounded-3xl p-8 shadow-xl border border-cyan-100">
+              <div className="bg-gradient-to-br from-cyan-100 to-cyan-100 rounded-3xl p-8 shadow-xl border border-cyan-100">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-full flex items-center justify-center">
                     <Lock className="w-5 h-5 text-white" />
@@ -361,7 +361,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
               </div>
 
               {/* Preferences Section */}
-              <div className="bg-gradient-to-br from-cyan-50 via-white to-cyan-50 rounded-3xl p-8 shadow-xl border border-cyan-100">
+              <div className="bg-gradient-to-br from-cyan-100 to-cyan-100 rounded-3xl p-8 shadow-xl border border-cyan-100">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-full flex items-center justify-center">
                     <Settings className="w-5 h-5 text-white" />
@@ -446,7 +446,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
             </div>
 
             {/* Danger Zone */}
-            <div className="bg-gradient-to-br from-red-50 via-white to-red-50 rounded-3xl p-8 shadow-xl border-2 border-red-200">
+            <div className="bg-gradient-to-br from-red-100 to-red-100 rounded-3xl p-8 shadow-xl border-2 border-red-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-gradient-to-br from-red-400 to-red-500 rounded-full flex items-center justify-center">
                   <AlertTriangle className="w-5 h-5 text-white" />
