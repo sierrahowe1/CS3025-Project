@@ -11,15 +11,15 @@ export default function SingleMessage({ message, onAccept, onDecline, onBack }) 
               <Mail className="w-6 h-6 text-cyan-500" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-white">Message Details</h2>
-              <p className="text-cyan-50 text-sm">{message.timestamp}</p>
+              <h2 className="text-2xl font-bold text-black">Message Details</h2>
+              <p className="text-black text-sm">{message.timestamp}</p>
             </div>
           </div>
           <button
             onClick={onBack}
             className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all"
           >
-            <X className="w-6 h-6 text-white" />
+            <X className="w-6 h-6 text-black" />
           </button>
         </div>
 

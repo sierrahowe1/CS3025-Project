@@ -318,12 +318,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-cyan-400 rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-lg md:max-w-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
             {/* Close Button */}
-            <button
-              onClick={handleCloseModal}
-              className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <X className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
+            
 
             {/* Modal Header */}
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
